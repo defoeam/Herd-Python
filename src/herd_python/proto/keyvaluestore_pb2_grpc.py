@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import keyvaluestore_pb2 as keyvaluestore__pb2
+from proto import keyvaluestore_pb2 as proto_dot_keyvaluestore__pb2
 
 GRPC_GENERATED_VERSION = '1.67.1'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in keyvaluestore_pb2_grpc.py depends on'
+        + f' but the generated code in proto/keyvaluestore_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -37,38 +37,38 @@ class KeyValueServiceStub(object):
         """
         self.Get = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/Get',
-                request_serializer=keyvaluestore__pb2.GetRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.KeyValue.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.GetRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.KeyValue.FromString,
                 _registered_method=True)
         self.GetAll = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/GetAll',
-                request_serializer=keyvaluestore__pb2.GetAllRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.GetAllResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.GetAllRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.GetAllResponse.FromString,
                 _registered_method=True)
         self.GetKeys = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/GetKeys',
-                request_serializer=keyvaluestore__pb2.GetKeysRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.GetKeysResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.GetKeysRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.GetKeysResponse.FromString,
                 _registered_method=True)
         self.GetValues = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/GetValues',
-                request_serializer=keyvaluestore__pb2.GetValuesRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.GetValuesResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.GetValuesRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.GetValuesResponse.FromString,
                 _registered_method=True)
         self.Set = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/Set',
-                request_serializer=keyvaluestore__pb2.SetRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.SetResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.SetRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.SetResponse.FromString,
                 _registered_method=True)
         self.Delete = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/Delete',
-                request_serializer=keyvaluestore__pb2.DeleteRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.DeleteResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.DeleteRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.DeleteResponse.FromString,
                 _registered_method=True)
         self.DeleteAll = channel.unary_unary(
                 '/keyvaluestore.KeyValueService/DeleteAll',
-                request_serializer=keyvaluestore__pb2.DeleteAllRequest.SerializeToString,
-                response_deserializer=keyvaluestore__pb2.DeleteAllResponse.FromString,
+                request_serializer=proto_dot_keyvaluestore__pb2.DeleteAllRequest.SerializeToString,
+                response_deserializer=proto_dot_keyvaluestore__pb2.DeleteAllResponse.FromString,
                 _registered_method=True)
 
 
@@ -123,38 +123,38 @@ def add_KeyValueServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Get': grpc.unary_unary_rpc_method_handler(
                     servicer.Get,
-                    request_deserializer=keyvaluestore__pb2.GetRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.KeyValue.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.GetRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.KeyValue.SerializeToString,
             ),
             'GetAll': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAll,
-                    request_deserializer=keyvaluestore__pb2.GetAllRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.GetAllResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.GetAllRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.GetAllResponse.SerializeToString,
             ),
             'GetKeys': grpc.unary_unary_rpc_method_handler(
                     servicer.GetKeys,
-                    request_deserializer=keyvaluestore__pb2.GetKeysRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.GetKeysResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.GetKeysRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.GetKeysResponse.SerializeToString,
             ),
             'GetValues': grpc.unary_unary_rpc_method_handler(
                     servicer.GetValues,
-                    request_deserializer=keyvaluestore__pb2.GetValuesRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.GetValuesResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.GetValuesRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.GetValuesResponse.SerializeToString,
             ),
             'Set': grpc.unary_unary_rpc_method_handler(
                     servicer.Set,
-                    request_deserializer=keyvaluestore__pb2.SetRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.SetResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.SetRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.SetResponse.SerializeToString,
             ),
             'Delete': grpc.unary_unary_rpc_method_handler(
                     servicer.Delete,
-                    request_deserializer=keyvaluestore__pb2.DeleteRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.DeleteResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.DeleteRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.DeleteResponse.SerializeToString,
             ),
             'DeleteAll': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteAll,
-                    request_deserializer=keyvaluestore__pb2.DeleteAllRequest.FromString,
-                    response_serializer=keyvaluestore__pb2.DeleteAllResponse.SerializeToString,
+                    request_deserializer=proto_dot_keyvaluestore__pb2.DeleteAllRequest.FromString,
+                    response_serializer=proto_dot_keyvaluestore__pb2.DeleteAllResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -183,8 +183,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/Get',
-            keyvaluestore__pb2.GetRequest.SerializeToString,
-            keyvaluestore__pb2.KeyValue.FromString,
+            proto_dot_keyvaluestore__pb2.GetRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.KeyValue.FromString,
             options,
             channel_credentials,
             insecure,
@@ -210,8 +210,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/GetAll',
-            keyvaluestore__pb2.GetAllRequest.SerializeToString,
-            keyvaluestore__pb2.GetAllResponse.FromString,
+            proto_dot_keyvaluestore__pb2.GetAllRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.GetAllResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -237,8 +237,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/GetKeys',
-            keyvaluestore__pb2.GetKeysRequest.SerializeToString,
-            keyvaluestore__pb2.GetKeysResponse.FromString,
+            proto_dot_keyvaluestore__pb2.GetKeysRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.GetKeysResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -264,8 +264,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/GetValues',
-            keyvaluestore__pb2.GetValuesRequest.SerializeToString,
-            keyvaluestore__pb2.GetValuesResponse.FromString,
+            proto_dot_keyvaluestore__pb2.GetValuesRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.GetValuesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -291,8 +291,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/Set',
-            keyvaluestore__pb2.SetRequest.SerializeToString,
-            keyvaluestore__pb2.SetResponse.FromString,
+            proto_dot_keyvaluestore__pb2.SetRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.SetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -318,8 +318,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/Delete',
-            keyvaluestore__pb2.DeleteRequest.SerializeToString,
-            keyvaluestore__pb2.DeleteResponse.FromString,
+            proto_dot_keyvaluestore__pb2.DeleteRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.DeleteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -345,8 +345,8 @@ class KeyValueService(object):
             request,
             target,
             '/keyvaluestore.KeyValueService/DeleteAll',
-            keyvaluestore__pb2.DeleteAllRequest.SerializeToString,
-            keyvaluestore__pb2.DeleteAllResponse.FromString,
+            proto_dot_keyvaluestore__pb2.DeleteAllRequest.SerializeToString,
+            proto_dot_keyvaluestore__pb2.DeleteAllResponse.FromString,
             options,
             channel_credentials,
             insecure,
