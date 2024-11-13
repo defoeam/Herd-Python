@@ -1,8 +1,8 @@
 """Herd gRPC client library."""
 import grpc
 from typing import Optional
-from proto import keyvaluestore_pb2 as herd_serv
-from proto import keyvaluestore_pb2_grpc as herd_grpc
+from . import keyvaluestore_pb2 as herd_serv
+from . import keyvaluestore_pb2_grpc as herd_grpc
 
 class HerdClient:
     """Client for the Herd gRPC service."""
@@ -16,19 +16,20 @@ class HerdClient:
         """Set a key-value pair."""
         request = herd_serv.SetRequest(key=key, value=value)
         response = self.stub.Set(request)
-        return response.success
+        return response.item.key == key and response.item.value == value
     
     def get(self, key: str) -> Optional[bytes]:
         """Get value by key."""
         request = herd_serv.GetRequest(key=key)
         response = self.stub.Get(request)
-        return response.value if response.exists else None
+        # Response is KeyValue message
+        return response.value if response.key == key else None
     
     def delete(self, key: str) -> bool:
         """Delete a key-value pair."""
         request = herd_serv.DeleteRequest(key=key)
         response = self.stub.Delete(request)
-        return response.success
+        return response.deleted_item.key == key
     
     def close(self):
         """Close the gRPC channel."""

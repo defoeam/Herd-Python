@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from proto import keyvaluestore_pb2 as proto_dot_keyvaluestore__pb2
+from . import keyvaluestore_pb2 as proto_dot_keyvaluestore__pb2
 
 GRPC_GENERATED_VERSION = '1.67.1'
 GRPC_VERSION = grpc.__version__
